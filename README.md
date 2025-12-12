@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# Template React TS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plantilla base para el desarrollo de aplicaciones CRM o ERP empresariales desarrollada en React con TypeScript. Esta plantilla proporciona una configuración mínima para comenzar proyectos empresariales con React, TypeScript y Vite, incluyendo HMR (Hot Module Replacement) y reglas de ESLint configuradas.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para desarrollar con esta plantilla, necesitarás las siguientes herramientas:
 
-## Expanding the ESLint configuration
+- **[Bun](https://bun.sh/)** - Runtime y gestor de paquetes JavaScript/TypeScript
+- **[Node.js](https://nodejs.org/)** (alternativa a Bun) - Runtime de JavaScript
+- **[React](https://react.dev/)** - Biblioteca para construir interfaces de usuario
+- **[TypeScript](https://www.typescriptlang.org/)** - Superset tipado de JavaScript
+- **[Vite](https://vitejs.dev/)** - Herramienta de construcción y desarrollo
+- **[ESLint](https://eslint.org/)** - Linter para JavaScript/TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Cómo iniciar
 
-- Configure the top-level `parserOptions` property like this:
+1. Instala las dependencias del proyecto:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+bun install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Inicia el servidor de desarrollo:
+
+```bash
+bun dev
+```
+
+3. Abre tu navegador en la URL que se muestra en la terminal (generalmente `http://localhost:5173`)
+
+## Scripts disponibles
+
+- `bun dev` - Inicia el servidor de desarrollo con Vite
+- `bun build` - Compila el proyecto para producción
+- `bun lint` - Ejecuta ESLint para verificar el código
+- `bun preview` - Previsualiza la build de producción
