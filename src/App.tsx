@@ -1,33 +1,27 @@
-import "./App.css";
 import { useState } from "react";
+import "./App.css";
+import InputText from "./components/InputText";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 2);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const reset = () => {
-    setCount(0);
-  };
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   return (
     <div className="container">
-      <h1>Contador: {count}</h1>
-      <button className="btn btn-primary" onClick={increment}>
-        +
-      </button>
-      <button className="btn btn-primary" onClick={decrement}>
-        -
-      </button>
-      <button className="btn btn-primary" onClick={reset}>
-        Reset
-      </button>
+      <InputText
+        placeholder="Ingresa tu usuario"
+        type="text"
+        onChange={setUsername}
+      />
+      <InputText
+        placeholder="Ingresa tu contraseña"
+        type="password"
+        onChange={setPassword}
+      />
+      <button>Submit</button>
+      <p style={{ color: "black" }}>
+        Usuario: {username} | Contraseña: {password}
+      </p>
     </div>
   );
 };
