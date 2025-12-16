@@ -8,6 +8,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <h1 style={{ color: "black" }}>Formulario</h1>
       <InputText
         placeholder="Ingresa tu usuario"
         type="text"
@@ -20,7 +21,7 @@ const App = () => {
       />
       <button>Submit</button>
       <p style={{ color: "black" }}>
-        Usuario: {username} | Contraseña: {password}
+        Usuario: {username} <br /> Contraseña: {password}
       </p>
     </div>
   );
