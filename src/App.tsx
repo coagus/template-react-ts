@@ -3,6 +3,7 @@ import "./App.css";
 import InputText from "./components/InputText";
 
 const App = () => {
+  const [name, setName] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -26,7 +27,7 @@ const App = () => {
       />
       <button>Submit</button>
       <p style={{ color: "black" }}>
-        Usuario: {username} <br /> Contraseña: {password}
+        Nombre: {name} <br /> Usuario: {username} <br /> Contraseña: {password}
       </p>
     </div>
   );
