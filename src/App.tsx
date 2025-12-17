@@ -5,10 +5,16 @@ import InputText from "./components/InputText";
 const App = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
 
   return (
     <div className="container">
       <h1 style={{ color: "black" }}>Formulario</h1>
+      <InputText
+        placeholder="Ingresa tu dirección"
+        type="text"
+        onChange={setAddress}
+      />
       <InputText
         placeholder="Ingresa tu usuario"
         type="text"
@@ -21,7 +27,10 @@ const App = () => {
       />
       <button>Submit</button>
       <p style={{ color: "black" }}>
-        Usuario: {username} <br /> Contraseña: {password}
+      Dirección: {address} <br />
+        Usuario: {username} <br /> 
+        Contraseña: {password} 
+        
       </p>
     </div>
   );
