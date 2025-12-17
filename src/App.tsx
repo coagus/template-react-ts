@@ -3,6 +3,7 @@ import "./App.css";
 import InputText from "./components/InputText";
 
 const App = () => {
+  const [name, setName] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -11,6 +12,10 @@ const App = () => {
     <div className="container">
       <h1 style={{ color: "black" }}>Formulario</h1>
       <InputText
+        placeholder="Ingresa tu nombre"
+        type="text"
+        onChange={setName}/>
+        <InputText     
         placeholder="Ingresa tu dirección"
         type="text"
         onChange={setAddress}
@@ -27,6 +32,7 @@ const App = () => {
       />
       <button>Submit</button>
       <p style={{ color: "black" }}>
+        Nombre: {name} <br /> 
       Dirección: {address} <br />
         Usuario: {username} <br /> 
         Contraseña: {password} 
