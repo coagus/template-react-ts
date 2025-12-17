@@ -6,6 +6,7 @@ const App = () => {
   const [name, setName] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
 
   return (
     <div className="container">
@@ -13,7 +14,11 @@ const App = () => {
       <InputText
         placeholder="Ingresa tu nombre"
         type="text"
-        onChange={setName}
+        onChange={setName}/>
+        <InputText     
+        placeholder="Ingresa tu dirección"
+        type="text"
+        onChange={setAddress}
       />
       <InputText
         placeholder="Ingresa tu usuario"
@@ -27,7 +32,11 @@ const App = () => {
       />
       <button>Submit</button>
       <p style={{ color: "black" }}>
-        Nombre: {name} <br /> Usuario: {username} <br /> Contraseña: {password}
+        Nombre: {name} <br /> 
+      Dirección: {address} <br />
+        Usuario: {username} <br /> 
+        Contraseña: {password} 
+        
       </p>
     </div>
   );
