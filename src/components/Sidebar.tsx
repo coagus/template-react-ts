@@ -1,9 +1,9 @@
-import { useAuth } from "../hooks/useAuth";
 import {
   ChartBarIcon,
   UsersIcon,
   Cog6ToothIcon,
   DocumentChartBarIcon,
+  BuildingStorefrontIcon,
 } from "@heroicons/react/24/outline";
 import { ReactElement } from "react";
 
@@ -14,8 +14,6 @@ interface MenuItem {
 }
 
 const Sidebar = () => {
-  const { user } = useAuth();
-
   const menuItems: MenuItem[] = [
     {
       label: "Dashboard",
@@ -42,11 +40,9 @@ const Sidebar = () => {
   return (
     <aside className="w-64 bg-white border-r border-gray-200 h-full overflow-y-auto">
       <div>
-        <div className="mb-8">
-          <h2 className="text-xl font-bold text-gray-900">Menú</h2>
-          {user && (
-            <p className="text-sm text-gray-600 mt-1">Usuario: {user}</p>
-          )}
+        <div className="mb-2 p-4 flex items-center gap-2">
+          <BuildingStorefrontIcon className="w-7 h-7" />
+          <h2 className="text-2xl font-bold text-gray-900">Negocio Virtual</h2>
         </div>
 
         <nav className="space-y-1">
@@ -67,4 +63,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
