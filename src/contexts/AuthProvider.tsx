@@ -3,6 +3,11 @@ import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<string>("");
+
+  const saveUser = (user: string) => {
+    setUser(user);
+  };
 
   const login = () => {
     setIsAuthenticated(true);
@@ -13,7 +18,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, saveUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

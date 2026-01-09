@@ -3,7 +3,7 @@ import { useAuth } from "../hooks/useAuth";
 import InputText from "../components/InputText";
 
 const LoginLayout = () => {
-  const { login } = useAuth();
+  const { login, saveUser } = useAuth();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -11,6 +11,7 @@ const LoginLayout = () => {
     e.preventDefault();
     if (username && password) {
       login();
+      saveUser(username);
     }
   };
 

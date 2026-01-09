@@ -1,39 +1,74 @@
+import InputText from "../components/InputText";
 import { useAuth } from "../hooks/useAuth";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 const DashboardLayout = () => {
-  const { logout } = useAuth();
+  const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-            <button
-              onClick={logout}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-200"
-            >
-              Cerrar Sesión
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="h-screen bg-gray-50 flex overflow-hidden">
+      {/* Sidebar */}
+      <Sidebar />
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      {/* Contenido Principal con Header */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Header />
+
+        {/* Main Content */}
+        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Bienvenido al Dashboard
+            Bienvenido al Dashboard {user}
           </h2>
           <p className="text-gray-600">
-            Has iniciado sesión correctamente. Este es el contenido principal del dashboard.
+            Has iniciado sesión correctamente. Este es el contenido principal
+            del dashboard.
           </p>
-        </div>
-      </main>
+          <br />
+
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            Componentes
+          </h2>
+          <h3 className="text-md font-semibold text-gray-900 mb-4">
+            InputText
+          </h3>
+          <InputText
+            placeholder="Ingresa tu usuario"
+            type="text"
+            onChange={() => {}}
+          />
+
+          <hr className="my-4"/>
+
+          <div className="grid grid-flow-col grid-rows-3 gap-4 border border-gray-200 rounded-lg p-4">
+            <div className="row-span-3 bg-gray-100 p-4">    
+              <InputText
+                placeholder="Ingresa tu usuario"
+                type="text"
+                onChange={() => {}}
+              />
+            </div>
+            <div className="col-span-2">
+              <InputText
+                placeholder="Ingresa tu usuario"
+                type="text"
+                onChange={() => {}}
+              />
+            </div>
+            <div className="col-span-2 row-span-2">
+              <InputText
+                placeholder="Ingresa tu usuario"
+                type="text"
+                onChange={() => {}}
+              />
+            </div>
+          </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
 export default DashboardLayout;
-
