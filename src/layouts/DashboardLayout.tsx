@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import InputText from "../components/InputText";
 import { useAuth } from "../hooks/useAuth";
 import Header from "../components/Header";
@@ -5,15 +6,38 @@ import Sidebar from "../components/Sidebar";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // Detectar tamaño de pantalla y colapsar automáticamente en md o menor
+  useEffect(() => {
+    const checkScreenSize = () => {
+      // md breakpoint en Tailwind es 768px
+      const isMdOrSmaller = window.innerWidth < 1200;
+      setIsSidebarCollapsed(isMdOrSmaller);
+    };
+
+    // Verificar al montar el componente
+    checkScreenSize();
+
+    // Agregar listener para cambios de tamaño
+    window.addEventListener("resize", checkScreenSize);
+
+    // Limpiar listener al desmontar
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
 
   return (
     <div className="h-screen bg-gray-50 flex overflow-hidden">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar isCollapsed={isSidebarCollapsed} />
 
       {/* Contenido Principal con Header */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header />
+        <Header onToggleSidebar={toggleSidebar} />
 
         {/* Main Content */}
         <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 overflow-y-auto">

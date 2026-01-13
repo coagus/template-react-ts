@@ -5,7 +5,11 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
-const Header = () => {
+interface HeaderProps {
+  onToggleSidebar: () => void;
+}
+
+const Header = ({ onToggleSidebar }: HeaderProps) => {
   const { logout, user } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -39,11 +43,11 @@ const Header = () => {
 
   return (
     <header className="bg-white border-b border-gray-200">
-      <div className="px-4 sm:px-6 lg:px-8">
+      <div className="px-4">
         <div className="flex justify-between items-center h-14">
           {/* Botón para ocultar menú */}
           <button
-            onClick={() => console.log("Toggle menu")}
+            onClick={onToggleSidebar}
             className="p-2 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200"
             aria-label="Ocultar menú"
           >
