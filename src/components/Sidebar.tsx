@@ -48,7 +48,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
 
   return (
     <aside
-      className={`bg-white border-r border-gray-200 h-full overflow-y-auto transition-all duration-300 ${
+      className={`bg-theme-surface border-r border-theme h-full overflow-y-auto transition-all duration-300 ${
         isCollapsed ? "w-20" : "w-64"
       }`}
     >
@@ -58,9 +58,10 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             className={`transition-all duration-300 ${
               isCollapsed ? "w-8 h-8 mx-auto" : "w-7 h-7"
             }`}
+            style={{ color: 'var(--color-text-primary)' }}
           />
           <h2
-            className={`text-2xl font-bold text-gray-900 transition-all duration-300 ${
+            className={`text-2xl font-bold text-theme-primary transition-all duration-300 ${
               isCollapsed
                 ? "opacity-0 w-0 overflow-hidden"
                 : "opacity-100 delay-300"
@@ -77,15 +78,17 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             <button
               key={index}
               onClick={item.onClick}
-              className={`w-full text-gray-700 hover:bg-gray-100 transition-colors duration-500 ${
+              className={`w-full text-theme-secondary hover-theme transition-colors duration-500 ${
                 isCollapsed
                   ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
                   : "flex items-center gap-3 px-4 py-3 text-left"
               }`}
             >
-              {isCollapsed ? item.collapsedIcon : item.icon}
+              <span style={{ color: 'var(--color-text-secondary)' }}>
+                {isCollapsed ? item.collapsedIcon : item.icon}
+              </span>
               <span
-                className={`font-medium transition-all duration-300 ${
+                className={`font-medium text-theme-secondary transition-all duration-300 ${
                   isCollapsed
                     ? "text-[10px] opacity-100"
                     : "opacity-100 delay-300"
