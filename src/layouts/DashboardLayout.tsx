@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import Container from "../components/Container";
 
 const DashboardLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -37,9 +37,7 @@ const DashboardLayout = () => {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header onToggleSidebar={toggleSidebar} />
 
-        <Container title="Dashboard" path="home / dashboard / index">
-          <h1>Dashboard</h1>
-        </Container>
+        <Outlet />
       </div>
     </div>
   );
