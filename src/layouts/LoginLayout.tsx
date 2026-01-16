@@ -22,7 +22,6 @@ const LoginLayout = () => {
           <h1 className="text-4xl font-bold text-theme-primary mb-8 text-center">
             Ingresar
           </h1>
-          
           <form onSubmit={handleSubmit} className="space-y-6">
             <InputText
               placeholder="Ingresa tu usuario"
@@ -33,8 +32,7 @@ const LoginLayout = () => {
               placeholder="Ingresa tu contraseña"
               type="password"
               onChange={setPassword}
-            />
-            
+            />ƒ
             <button
               type="submit"
               className="w-full rounded-lg bg-theme-primary text-theme-inverse font-medium py-3 px-4 transition-colors duration-200 bg-theme-primary-hover focus-theme disabled:opacity-50 disabled:cursor-not-allowed"
@@ -50,4 +48,3 @@ const LoginLayout = () => {
 };
 
 export default LoginLayout;
-

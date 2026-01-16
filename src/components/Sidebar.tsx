@@ -58,7 +58,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             className={`transition-all duration-300 ${
               isCollapsed ? "w-8 h-8 mx-auto" : "w-7 h-7"
             }`}
-            style={{ color: 'var(--color-text-primary)' }}
+            style={{ color: "var(--color-text-primary)" }}
           />
           <h2
             className={`text-2xl font-bold text-theme-primary transition-all duration-300 ${
@@ -71,8 +71,6 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
           </h2>
         </div>
 
-        
-
         <nav className="space-y-1">
           {menuItems.map((item, index) => (
             <button
@@ -84,7 +82,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                   : "flex items-center gap-3 px-4 py-3 text-left"
               }`}
             >
-              <span style={{ color: 'var(--color-text-secondary)' }}>
+              <span style={{ color: "var(--color-text-secondary)" }}>
                 {isCollapsed ? item.collapsedIcon : item.icon}
               </span>
               <span
