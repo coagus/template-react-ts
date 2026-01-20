@@ -62,7 +62,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         }`}
     >
       <div>
-        <div className="p-3 flex items-center gap-2">
+
+        <Link to="/" className="flex items-center gap-2 p-3">
           <BuildingStorefrontIcon
             className={`transition-all duration-300 ${isCollapsed ? "w-8 h-8 mx-auto" : "w-7 h-7"
               }`}
@@ -70,13 +71,14 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
           />
           <h2
             className={`text-2xl font-bold text-theme-primary transition-all duration-300 ${isCollapsed
-                ? "opacity-0 w-0 overflow-hidden"
-                : "opacity-100 delay-300"
+              ? "opacity-0 w-0 overflow-hidden"
+              : "opacity-100 delay-300"
               }`}
           >
             Negocio Virtual
           </h2>
-        </div>
+        </Link>
+
 
         <nav className="space-y-1">
           {menuItems.map((item, index) => {
@@ -86,8 +88,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                 key={index}
                 to={item.path}
                 className={`w-full text-theme-secondary hover-theme transition-colors duration-500 ${isCollapsed
-                    ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
-                    : "flex items-center gap-3 px-4 py-3 text-left"
+                  ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
+                  : "flex items-center gap-3 px-4 py-3 text-left"
                   } ${isActive ? "bg-theme-primary/10 border-r-2 border-theme-primary" : ""
                   }`}
               >
@@ -96,8 +98,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                 </span>
                 <span
                   className={`font-medium text-theme-secondary transition-all duration-300 ${isCollapsed
-                      ? "text-[10px] opacity-100"
-                      : "opacity-100 delay-300"
+                    ? "text-[10px] opacity-100"
+                    : "opacity-100 delay-300"
                     }`}
                 >
                   {item.label}
