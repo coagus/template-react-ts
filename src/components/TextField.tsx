@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 export interface TextFieldProps {
   // Props básicas
@@ -29,6 +30,7 @@ export interface TextFieldProps {
   // Adornos
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
+  showPasswordToggle?: boolean; // Controla si se muestra el toggle para mostrar/ocultar password
   
   // Eventos
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -64,6 +66,7 @@ const TextField = ({
   type = 'text',
   startAdornment,
   endAdornment,
+  showPasswordToggle,
   onChange,
   onBlur,
   onFocus,
@@ -74,6 +77,7 @@ const TextField = ({
 }: TextFieldProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const inputId = id || `textfield-${Math.random().toString(36).substr(2, 9)}`;
   const helperTextId = `${inputId}-helper-text`;
@@ -81,6 +85,15 @@ const TextField = ({
 
   // Determinar si el label debe estar "shrink" (contraído)
   const shouldShrink = isFocused || isFilled || (value !== undefined && value !== '') || (defaultValue !== undefined && defaultValue !== '');
+
+  // Determinar si se debe mostrar el toggle de password
+  const shouldShowPasswordToggle = 
+    type === 'password' && 
+    (showPasswordToggle !== false) && // Por defecto true si es password
+    !endAdornment; // No mostrar si hay un endAdornment personalizado
+
+  // Tipo de input dinámico para password
+  const inputType = type === 'password' && showPassword ? 'text' : type;
 
   useEffect(() => {
     if (inputRef.current) {
@@ -275,7 +288,7 @@ const TextField = ({
             ref={inputRef as React.RefObject<HTMLInputElement>}
             id={inputId}
             name={name}
-            type={type}
+            type={inputType}
             value={value}
             defaultValue={defaultValue}
             placeholder={shouldShrink ? placeholder : ''}
@@ -296,11 +309,30 @@ const TextField = ({
           />
         )}
 
-        {/* End Adornment */}
-        {endAdornment && (
-          <div className="flex items-center ml-2 text-theme-secondary">
-            {endAdornment}
-          </div>
+        {/* Password Toggle o End Adornment */}
+        {shouldShowPasswordToggle ? (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            disabled={disabled}
+            className={`flex items-center ml-2 text-theme-secondary hover:text-theme-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-theme-focus rounded p-1 ${
+              disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'
+            }`}
+            aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+            tabIndex={0}
+          >
+            {showPassword ? (
+              <EyeSlashIcon className="w-5 h-5" />
+            ) : (
+              <EyeIcon className="w-5 h-5" />
+            )}
+          </button>
+        ) : (
+          endAdornment && (
+            <div className="flex items-center ml-2 text-theme-secondary">
+              {endAdornment}
+            </div>
+          )
         )}
       </div>
 

@@ -93,14 +93,25 @@ const Componentes = () => {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-theme-secondary mb-2">Password</h2>
+              <h2 className="text-lg font-semibold text-theme-secondary mb-2">Password (con toggle automático)</h2>
               <TextField
                 label="Password"
                 variant="outlined"
                 type="password"
                 value={passwordValue}
                 onChange={(e) => setPasswordValue(e.target.value)}
-                helperText="Ingresa tu contraseña"
+                helperText="Haz clic en el icono del ojo para mostrar/ocultar la contraseña"
+              />
+            </div>
+
+            <div>
+              <h2 className="text-lg font-semibold text-theme-secondary mb-2">Password sin toggle</h2>
+              <TextField
+                label="Password sin toggle"
+                variant="outlined"
+                type="password"
+                showPasswordToggle={false}
+                helperText="Toggle desactivado con showPasswordToggle={false}"
               />
             </div>
 
