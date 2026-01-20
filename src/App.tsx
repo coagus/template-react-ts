@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Usuarios from "./pages/Usuarios";
 import Configuracion from "./pages/Configuracion";
 import Reportes from "./pages/Reportes";
+import Componentes from "./pages/Componentes";
 
 const AppContent = () => {
   const { isAuthenticated } = useAuth();
@@ -23,6 +24,7 @@ const AppContent = () => {
         <Route path="usuarios" element={<Usuarios />} />
         <Route path="configuracion" element={<Configuracion />} />
         <Route path="reportes" element={<Reportes />} />
+        <Route path="componentes" element={<Componentes />} />
       </Route>
     </Routes>
   );
