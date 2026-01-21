@@ -5,15 +5,24 @@ import {
   DocumentChartBarIcon,
   BuildingStorefrontIcon,
   Squares2X2Icon,
+  PencilIcon,
 } from "@heroicons/react/24/outline";
 import { ReactElement } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Menu from "./Menu";
 
 interface MenuItem {
   label: string;
   path: string;
   icon?: ReactElement;
   collapsedIcon?: ReactElement;
+}
+
+interface MenuItemNuevo {
+  label: string;
+  path: string;
+  icon?: ReactElement;
+  children?: MenuItemNuevo[];
 }
 
 interface SidebarProps {
@@ -56,6 +65,41 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
     },
   ];
 
+  const menuItemsNuevo: MenuItemNuevo[] = [
+    {
+      label: "Dashboard",
+      path: "/dashboard",
+      icon: <ChartBarIcon className="w-5 h-5" />,
+    },
+    {
+      label: "Usuarios",
+      path: "/usuarios",
+      icon: <UsersIcon className="w-5 h-5" />,
+    },
+    {
+      label: "Configuración",
+      path: "/configuracion",
+      icon: <Cog6ToothIcon className="w-5 h-5" />,
+    },
+    {
+      label: "Reportes",
+      path: "/reportes",
+      icon: <DocumentChartBarIcon className="w-5 h-5" />,
+    },
+    {
+      label: "Componentes",
+      path: "/componentes",
+      icon: <Squares2X2Icon className="w-5 h-5" />,
+      children: [
+        {
+          label: "TextField",
+          path: "/componentes/textfield",
+          icon: <PencilIcon className="w-5 h-5" />,
+        }
+      ]
+    },
+  ];
+
   return (
     <aside
       className={`bg-theme-surface border-r border-theme h-full overflow-y-auto transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"
@@ -90,7 +134,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                 className={`w-full text-theme-secondary hover-theme transition-colors duration-500 ${isCollapsed
                   ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
                   : "flex items-center gap-3 px-4 py-3 text-left"
-                  } ${isActive ? "bg-theme-primary/10 border-r-2 border-theme-primary" : ""
+                  } ${isActive ? "bg-theme-surface-secondary border-r-2 border-theme-primary" : ""
                   }`}
               >
                 <span style={{ color: "var(--color-text-secondary)" }}>
@@ -108,6 +152,11 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             );
           })}
         </nav>
+
+        <hr className="my-4 border-theme" />
+
+        <Menu items={menuItemsNuevo} isCollapsed={isCollapsed} />
+
       </div>
     </aside>
   );
