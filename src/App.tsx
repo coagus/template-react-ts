@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthProvider";
+import { UsersProvider } from "./contexts/UsersProvider";
 import { useAuth } from "./hooks/useAuth";
 import LoginLayout from "./layouts/LoginLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
@@ -34,7 +35,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppContent />
+        <UsersProvider>
+          <AppContent />
+        </UsersProvider>
       </AuthProvider>
     </BrowserRouter>
   );
