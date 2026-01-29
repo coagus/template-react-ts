@@ -8,6 +8,7 @@ import Usuarios from "./pages/Usuarios";
 import Configuracion from "./pages/Configuracion";
 import Reportes from "./pages/Reportes";
 import Componentes from "./pages/Componentes";
+import TextField from "./pages/TextField";
 
 const AppContent = () => {
   const { isAuthenticated } = useAuth();
@@ -25,6 +26,7 @@ const AppContent = () => {
         <Route path="configuracion" element={<Configuracion />} />
         <Route path="reportes" element={<Reportes />} />
         <Route path="componentes" element={<Componentes />} />
+        <Route path="componentes/textfield" element={<TextField />} />
       </Route>
     </Routes>
   );
