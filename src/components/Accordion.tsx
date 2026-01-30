@@ -1,9 +1,11 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { ReactElement, ReactNode, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export interface AccordionItemProps {
   title: string;
   content: ReactNode;
+  path?: string;
   collapsedIcon?: ReactElement | null | undefined;
   icon?: ReactElement | null | undefined;
 }
@@ -30,6 +32,7 @@ const Accordion = ({
   collapsedIcon = undefined,
 }: AccordionProps) => {
   const [openIndex, setOpenIndex] = useState<number>(defaultOpen);
+  const location = useLocation();
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? -1 : index));
@@ -45,6 +48,7 @@ const Accordion = ({
         const isOpen = openIndex === index;
         const id = `accordion-${index}`;
         const panelId = `accordion-panel-${index}`;
+        const isActive = location.pathname === item.path;
 
         return (
           <div
@@ -58,17 +62,22 @@ const Accordion = ({
               id={id}
               className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left text-theme-secondary hover-theme transition-colors duration-200 focus:outline-none"
             >
-              <span className="flex items-center gap-2">
+              <span className={`w-full text-theme-secondary hover-theme transition-colors duration-500 ${isCollapsed
+                ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
+                : "flex items-center gap-3 text-left"
+                }`}>
                 <span className="mr-1" style={{ color: "var(--color-text-secondary)" }}>
                   {isCollapsed ? collapsedIcon : icon}
                 </span>
-                <span className="font-medium">{item.title}</span>
+                <span className={`font-medium text-theme-secondary transition-all duration-300 ${isCollapsed ? "text-[10px] opacity-100" : "opacity-100 delay-300"
+                  }`}>{item.title}</span>
               </span>
-              {isOpen ? (
-                <ChevronRightIcon className="h-4 w-4 shrink-0 transition-transform duration-200 text-theme-secondary" />
-              ) : (
-                <ChevronDownIcon className="h-4 w-4 shrink-0 transition-transform duration-200 text-theme-secondary" />
-              )}
+              {isCollapsed ? null
+                : (isOpen ? (
+                  <ChevronRightIcon className="h-4 w-4 shrink-0 transition-transform duration-200 text-theme-secondary" />
+                ) : (
+                  <ChevronDownIcon className="h-4 w-4 shrink-0 transition-transform duration-200 text-theme-secondary" />
+                ))}
             </button>
             <div
               id={panelId}
@@ -77,7 +86,7 @@ const Accordion = ({
               className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                 }`}
             >
-              <div className="px-4 py-3 text-sm text-theme-secondary">
+              <div className={`${isActive ? "bg-theme-surface-secondary border-r-2 border-theme-primary" : ""}`}>
                 {item.content}
               </div>
             </div>

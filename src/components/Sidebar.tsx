@@ -47,18 +47,6 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
       collapsedIcon: <UsersIcon className="w-7 h-7" />,
     },
     {
-      label: "Configuración",
-      path: "/configuracion",
-      icon: <Cog6ToothIcon className="w-5 h-5" />,
-      collapsedIcon: <Cog6ToothIcon className="w-7 h-7" />,
-    },
-    {
-      label: "Reportes",
-      path: "/reportes",
-      icon: <DocumentChartBarIcon className="w-5 h-5" />,
-      collapsedIcon: <DocumentChartBarIcon className="w-7 h-7" />,
-    },
-    {
       label: "Componentes",
       icon: <Squares2X2Icon className="w-5 h-5" />,
       collapsedIcon: <Squares2X2Icon className="w-7 h-7" />,
@@ -69,6 +57,18 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
           icon: <PencilIcon className="w-5 h-5" />,
         }
       ]
+    },
+    {
+      label: "Configuración",
+      path: "/configuracion",
+      icon: <Cog6ToothIcon className="w-5 h-5" />,
+      collapsedIcon: <Cog6ToothIcon className="w-7 h-7" />,
+    },
+    {
+      label: "Reportes",
+      path: "/reportes",
+      icon: <DocumentChartBarIcon className="w-5 h-5" />,
+      collapsedIcon: <DocumentChartBarIcon className="w-7 h-7" />,
     },
   ];
   /*
@@ -143,14 +143,15 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
                 defaultOpen={0}
                 items={item.children.map((child) => ({
                   title: item.label,
+                  path: child.path,
                   content: (
                     <Link
                       key={index}
                       to={child.path!}
                       className={`w-full text-theme-secondary hover-theme transition-colors duration-500 ${isCollapsed
                           ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
-                          : "flex items-center gap-3 px-4 py-3 text-left"
-                        } ${isActive ? "bg-theme-surface-secondary border-r-2 border-theme-primary" : ""}`}
+                          : "flex items-center gap-3 py-3 text-left pl-6"
+                        }`}
                     >
                       <span style={{ color: "var(--color-text-secondary)" }}>
                         {child.icon}
