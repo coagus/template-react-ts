@@ -19,7 +19,7 @@ const LoginLayout = () => {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            Login
+            Ingresar
           </h1>
           
           <form onSubmit={handleSubmit} className="space-y-6">
