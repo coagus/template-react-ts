@@ -10,7 +10,8 @@ import {
 import { useState } from "react";
 import Container from "../components/Container";
 import InputText from "../components/InputText";
-import Menu, { MenuItemData } from "../components/Menu";
+import Menu from "../components/Menu";
+import type { MenuItemType } from "../components/MenuItem";
 import TextField from "../components/TextField";
 
 const Componentes = () => {
@@ -23,18 +24,16 @@ const Componentes = () => {
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
 
   // Ejemplo de datos para el menú jerárquico
-  const menuItems: MenuItemData[] = [
+  const menuItems: MenuItemType[] = [
     {
       label: "Dashboard",
       path: "/dashboard",
-      icon: <ChartBarIcon className="w-5 h-5" />,
-      collapsedIcon: <ChartBarIcon className="w-7 h-7" />,
+      icon: ChartBarIcon,
     },
     {
       label: "Usuarios",
       path: "/usuarios",
-      icon: <UsersIcon className="w-5 h-5" />,
-      collapsedIcon: <UsersIcon className="w-7 h-7" />,
+      icon: UsersIcon,
       children: [
         {
           label: "Lista de Usuarios",
@@ -63,8 +62,7 @@ const Componentes = () => {
     {
       label: "Configuración",
       path: "/configuracion",
-      icon: <Cog6ToothIcon className="w-5 h-5" />,
-      collapsedIcon: <Cog6ToothIcon className="w-7 h-7" />,
+      icon: Cog6ToothIcon,
       children: [
         {
           label: "General",
@@ -73,20 +71,19 @@ const Componentes = () => {
         {
           label: "Seguridad",
           path: "/configuracion/seguridad",
-          icon: <ShieldCheckIcon className="w-5 h-5" />,
+          icon: ShieldCheckIcon,
         },
         {
           label: "Archivos",
           path: "/configuracion/archivos",
-          icon: <FolderIcon className="w-5 h-5" />,
+          icon: FolderIcon,
         },
       ],
     },
     {
       label: "Reportes",
       path: "/reportes",
-      icon: <DocumentChartBarIcon className="w-5 h-5" />,
-      collapsedIcon: <DocumentChartBarIcon className="w-7 h-7" />,
+      icon: DocumentChartBarIcon,
       children: [
         {
           label: "Reportes Generales",
@@ -101,8 +98,7 @@ const Componentes = () => {
     {
       label: "Componentes",
       path: "/componentes",
-      icon: <Squares2X2Icon className="w-5 h-5" />,
-      collapsedIcon: <Squares2X2Icon className="w-7 h-7" />,
+      icon: Squares2X2Icon,
     },
   ];
 
@@ -302,7 +298,7 @@ const Componentes = () => {
                     isMenuCollapsed ? "w-20" : "w-64"
                   }`}
                 >
-                  <Menu items={menuItems} isCollapsed={isMenuCollapsed} />
+                  <Menu menuItems={menuItems} isCollapsed={isMenuCollapsed} />
                 </aside>
               </div>
             </div>

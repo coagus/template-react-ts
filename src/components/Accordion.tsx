@@ -1,13 +1,17 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { ReactElement, ReactNode, useState } from "react";
+import { ComponentType, createElement, ReactNode, useState } from "react";
 import { useLocation } from "react-router-dom";
+
+const iconClassName = {
+  expanded: "w-5 h-5",
+  collapsed: "w-7 h-7",
+};
 
 export interface AccordionItemProps {
   title: string;
   content: ReactNode;
   path?: string;
-  collapsedIcon?: ReactElement | null | undefined;
-  icon?: ReactElement | null | undefined;
+  icon?: ComponentType<{ className?: string }>;
 }
 
 interface AccordionProps {
@@ -15,8 +19,7 @@ interface AccordionProps {
   defaultOpen?: number;
   className?: string;
   isCollapsed?: boolean;
-  icon?: ReactElement | null | undefined;
-  collapsedIcon?: ReactElement | null | undefined;
+  icon?: ComponentType<{ className?: string }>;
 }
 
 /**
@@ -28,8 +31,7 @@ const Accordion = ({
   defaultOpen = -1,
   className = "",
   isCollapsed = false,
-  icon = undefined,
-  collapsedIcon = undefined,
+  icon: IconComponent = undefined,
 }: AccordionProps) => {
   const [openIndex, setOpenIndex] = useState<number>(defaultOpen);
   const location = useLocation();
@@ -67,7 +69,10 @@ const Accordion = ({
                 : "flex items-center gap-3 text-left"
                 }`}>
                 <span className="mr-1" style={{ color: "var(--color-text-secondary)" }}>
-                  {isCollapsed ? collapsedIcon : icon}
+                  {IconComponent &&
+                    createElement(IconComponent, {
+                      className: isCollapsed ? iconClassName.collapsed : iconClassName.expanded,
+                    })}
                 </span>
                 <span className={`font-medium text-theme-secondary transition-all duration-300 ${isCollapsed ? "text-[10px] opacity-100" : "opacity-100 delay-300"
                   }`}>{item.title}</span>
