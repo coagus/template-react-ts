@@ -23,10 +23,10 @@ const MenuItem = ({ key, item, isCollapsed, activePath, isSubMenu }: MenuItemPro
     <Link
       key={key}
       to={item.path ?? '/'}
-      className={`w-full text-theme-secondary hover-theme transition-colors duration-500 
+      className={`w-full text-theme-secondary hover-theme transition-colors duration-500 py-3
               ${isCollapsed
-          ? "flex flex-col items-center justify-center px-2 py-3 gap-1"
-          : "flex items-center gap-3 px-4 py-3 text-left"} 
+          ? "flex flex-col items-center justify-center px-2  gap-1"
+          : "flex items-center gap-3 px-4 text-left"} 
               ${isActive ? "bg-theme-surface-secondary border-r-2 border-theme-primary" : ""}
               ${isSubMenu && !isCollapsed ? "pl-8" : ""}`}
     >

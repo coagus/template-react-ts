@@ -6,9 +6,10 @@ import type { MenuItemType } from "./MenuItem";
 
 interface MenuProps {
   menuItems: MenuItemType[];
+  isCollapsed: boolean;
 }
 
-const Menu = ({ menuItems, isCollapsed }: MenuProps & { isCollapsed: boolean }) => {
+const Menu = ({ menuItems, isCollapsed }: MenuProps) => {
   const location = useLocation();
   const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number>(-1);
 
@@ -17,7 +18,7 @@ const Menu = ({ menuItems, isCollapsed }: MenuProps & { isCollapsed: boolean }) 
   };
 
   return (
-    <nav className="space-y-1">
+    <nav>
       {menuItems.map((item, index) =>
         item.children ? (
           <SubMenu

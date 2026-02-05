@@ -75,8 +75,8 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
       <div>
         <Link to="/" className="flex items-center gap-2 p-3">
           <BuildingStorefrontIcon
-            className={`transition-all duration-300 ${isCollapsed ? "w-8 h-8 mx-auto" : "w-7 h-7"
-              }`}
+            className={`transition-all duration-300 
+              ${isCollapsed ? "w-8 h-8 mx-auto" : "w-7 h-7"}`}
             style={{ color: "var(--color-text-primary)" }}
           />
           <h2
