@@ -40,7 +40,7 @@ const SubMenu = ({ item, isCollapsed, activePath, isOpen, onToggle }: SubMenuPro
           </span>
           <span
             className={`font-medium text-theme-secondary transition-all duration-300 
-              ${isCollapsed ? "text-[10px] opacity-100" : "opacity-100 delay-300 px-4 text-left"
+              ${isCollapsed ? "text-[10px] opacity-100" : "opacity-100 delay-300"
               }`}
           >
             {item.label}
